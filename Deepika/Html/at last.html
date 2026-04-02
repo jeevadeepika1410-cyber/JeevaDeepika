@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love Theme</title>
+
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      background: linear-gradient(to bottom right, #ffffff, #ffe6f0);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+      position: relative;
+      padding: 20px;
+    }
+
+    .main{
+      width: 90%;
+      max-width: 1000px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* FIRST PAGE INTRO */
+    .intro{
+      background: rgba(255,255,255,0.9);
+      padding: 50px 25px;
+      border-radius: 25px;
+      border: 2px solid #ffb6c1;
+      box-shadow: 0px 10px 30px rgba(255, 105, 180, 0.2);
+      margin-bottom: 20px;
+    }
+
+    .intro h1{
+      font-size: 38px;
+      color: #ff1a66;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
+    .intro h2{
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .intro p{
+      font-size: 18px;
+      color: #444;
+      line-height: 28px;
+      margin-bottom: 12px;
+    }
+
+    .intro .highlight{
+      font-weight: bold;
+      color: #ff4d88;
+      font-size: 20px;
+      margin-top: 20px;
+    }
+
+    .love-btn{
+      background: #ff4d88;
+      color: white;
+      border: none;
+      padding: 14px 40px;
+      font-size: 18px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s;
+      position: relative;
+      z-index: 10;
+      margin-top: 20px;
+    }
+
+    .love-btn:hover{
+      background: #ff1a66;
+      transform: scale(1.05);
+    }
+
+    .love-container{
+      margin-top: 30px;
+      display: none;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .love-box{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+      background: rgba(255,255,255,0.9);
+      padding: 30px;
+      border-radius: 20px;
+      border: 2px solid #ffb6c1;
+      box-shadow: 0px 8px 25px rgba(255, 105, 180, 0.2);
+    }
+
+    /* AUTO SWAP IMAGE POSITION */
+    .love-box:nth-child(even){
+      flex-direction: row-reverse;
+    }
+
+    .love-text{
+      width: 50%;
+      text-align: left;
+    }
+
+    .love-text h1{
+      color: #ff4d88;
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    .love-text h2{
+      color: #333;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .love-text p{
+      font-size: 17px;
+      color: #444;
+      margin-bottom: 10px;
+      line-height: 25px;
+    }
+
+    .moment{
+      font-weight: bold;
+      color: #ff1a66;
+      margin-top: 15px;
+    }
+
+    .love-image{
+      width: 50%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .love-image img{
+      width: 100%;
+      max-width: 300px;
+      border-radius: 20px;
+      border: 3px solid #ff4d88;
+      box-shadow: 0px 6px 20px rgba(0,0,0,0.2);
+    }
+
+    /* Responsive */
+    @media(max-width: 768px){
+      .love-box{
+        flex-direction: column !important;
+        text-align: center;
+      }
+
+      .love-text, .love-image{
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    /* FLOATING HEART BACKGROUND */
+    .bg-heart{
+      position: fixed;
+      top: 100%;
+      color: rgba(255, 77, 136, 0.6);
+      font-size: 22px;
+      animation: floatBg 8s linear forwards;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    @keyframes floatBg{
+      0%{
+        transform: translateY(0) scale(0.8);
+        opacity: 0.8;
+      }
+      100%{
+        transform: translateY(-120vh) scale(1.8);
+        opacity: 0;
+      }
+    }
+
+    /* CLICK HEART ANIMATION */
+    .heart{
+      position: fixed;
+      animation: floatUp 4s linear forwards;
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    @keyframes floatUp{
+      0%{
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100%{
+        transform: translateY(-600px) scale(2);
+        opacity: 0;
+      }
+    }
+
+    /* STAR CURSOR EFFECT */
+    .star{
+      position: fixed;
+      color: gold;
+      font-size: 18px;
+      pointer-events: none;
+      animation: starFade 1s ease-out forwards;
+      z-index: 20;
+    }
+
+    @keyframes starFade{
+      0%{
+        transform: scale(1);
+        opacity: 1;
+      }
+      100%{
+        transform: scale(2);
+        opacity: 0;
+      }
+    }
+
+    /* LAST HAND PHOTO SPECIAL DESIGN */
+    .hand-section{
+      width: 100%;
+      padding: 50px 20px;
+      background: linear-gradient(to bottom right, #ffe6f0, #ffffff);
+      border-radius: 30px;
+      border: 3px solid #ff4d88;
+      box-shadow: 0px 12px 35px rgba(255, 77, 136, 0.3);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hand-section h1{
+      font-size: 32px;
+      color: #ff1a66;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+
+    .hand-section p{
+      font-size: 18px;
+      color: #444;
+      line-height: 30px;
+      margin-bottom: 15px;
+    }
+
+    .hand-section img{
+      width: 100%;
+      max-width: 420px;
+      border-radius: 30px;
+      border: 5px solid #ff4d88;
+      box-shadow: 0px 10px 30px rgba(0,0,0,0.3);
+      margin-top: 25px;
+      transition: 0.4s;
+    }
+
+    .hand-section img:hover{
+      transform: scale(1.06);
+    }
+
+    .glow-line{
+      width: 120px;
+      height: 4px;
+      background: #ff4d88;
+      margin: 0 auto 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 12px rgba(255, 77, 136, 0.8);
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="main">
+
+  <!-- FIRST PAGE INTRO -->
+  <div class="intro">
+    <h1>Our Life Star Phase ✨</h1>
+    <h2>Jeeva 💙 Deepika</h2>
+
+    <p>
+      In this world full of strangers,
+      <br>
+      you became my favorite forever ❤️
+    </p>
+
+    <p>
+      Every moment with you feels like a blessing,
+      <br>
+      and every smile of yours is my happiness 💕
+    </p>
+
+    <p class="highlight">
+      "Our story is not perfect,
+      <br>
+      but it is real... and it is ours 💞"
+    </p>
+
+    <!-- BUTTON TEXT CHANGED -->
+    <button class="love-btn" onclick="showLove()">
+      Open Our Memories 💌
+    </button>
+  </div>
+
+  <!-- SECOND PAGE (NO CHANGES INSIDE THIS) -->
+  <div class="love-container" id="loveBox">
+      <div class="love-box">
+      <div class="love-text">
+        <h1>Beautiful day of my life || 1st April💙</h1><br>
+        <h2>AMMU PAPA</h2>
+        <p>Unexpected Gift of my life - PAPA 🦋❤️</p>
+        <p>My Life Line - @jeeva_selvam</p>
+        <p class="moment">Beautiful Moment 💞</p>
+      </div>
+
+      
+
+      <div class="love-image">
+        <img src="/public/img/first image.jpeg">
+      </div>
+    </div>
+
+    <div class="love-box">
+      <div class="love-text">
+        <h1>Special Day of My Life🎂</h1><br>
+        <p>
+          <b>10.9.2023</b> was a painful memory because I couldn’t be with you 💔
+          <br>
+          But <b>10.9.2024</b> became my beautiful moment because I celebrated your special day with love ❤️💞
+        </p>
+        <p class="moment">Beautiful Moment 💗</p>
+      </div>
+
+      <div class="love-image">
+        <img src="/public/img/Birthday.jpeg">
+      </div>
+    </div>
+
+      <div class="love-box">
+      <div class="love-text">
+        <h1>Thanjavur Meet🏯❤️</h1><br>
+        <h2>Our First Magical Meet</h2>
+
+        <p>
+          That day in Thanjavur was not just a meet...
+          <br>
+          it was the beginning of my forever love 💕
+        </p>
+
+        <p>
+          When I saw you, my heart whispered softly,
+          <br>
+          "This is the person I prayed for" 🦋✨
+        </p>
+
+        <p class="moment">Thanjavur Moment 💙</p>
+      </div>
+
+      <div class="love-image">
+        <img src="/public/img/thanjavur.jpeg" alt="Thanjavur Image">
+      </div>
+    </div>
+
+
+    <div class="love-box">
+      <div class="love-text">
+        <h1>Tirchy Outing✨❤️</h1><br>
+        <h2>Our Beautiful Travel Day</h2>
+
+        <p>
+          Our first outing in Tirchy was not just a trip...
+          <br>
+          it was the beginning of our sweetest memories 💕
+        </p>
+
+        <p>
+          Walking beside you, holding your hand,
+          <br>
+          felt like my heart found its happiest place 🥰✨
+        </p>
+
+        <p class="moment">Happy Moment ❤️</p>
+      </div>
+
+      <div class="love-image">
+        <img src="/public/img/changed.jpeg" alt="Tirchy Image">
+      </div>
+    </div>
+<!-- OUR FIRST FIGHT -->
+<div class="love-box">
+
+  <!-- Left Side Text -->
+  <div class="love-text">
+    <h1>Our Fight 💔</h1><br>
+    <h2>The Pain That Changed Us...</h2>
+
+    <p>
+      Our first fight was not truly ours...
+      <br>
+      it was created by a third person 🥀
+    </p>
+
+    <p>
+      That misunderstanding built a distance between us,
+      <br>
+      a silence that hurt more than words 💭
+    </p>
+
+    <p>
+      But by God’s grace, we found our way back to each other 🙏❤️
+      <br>
+      we understood, we healed, and now we are stronger than ever 💕
+    </p>
+
+    <p class="moment">
+      "Some fights are not meant to break us,
+      <br>
+      they are meant to make us understand how deeply we love each other..."
+    </p>
+  </div>
+
+  <!-- Right Side Image -->
+  <div class="love-image">
+    <img src="/public/img/fight.jpeg" alt="Fight Image">
+  </div>
+
+</div>
+
+       <div class="love-box">
+      <div class="love-text">
+        <h1>Our First Meet With My Family❤️</h1><br>
+        <h2>A Day I Can Never Forget ✨</h2>
+
+        <p>
+          Meeting your family members and attending the temple function with you
+          <br>
+          felt like God was blessing our love journey 🙏💕
+        </p>
+
+        <p class="moment">Unforgettable Moment 💞</p>
+      </div>
+
+      <div class="love-image">
+        <img src="/public/img/family meet.jpeg" alt="Family Meeting Photo">
+      </div>
+    </div>
+
+
+
+  <div class="love-box">
+      <div class="love-text">
+        <h1>Coimbatore Meet🛕❤️</h1><br>
+        <h2>Vinayagar Temple Moment ✨</h2>
+
+        <p>
+          Standing with you inside Vinayagar temple,
+          <br>
+          I felt peace, happiness, and love all together 🙏💖
+        </p>
+
+        <p class="moment">Blessed Moment 💞</p>
+      </div>
+
+      <div class="love-image">
+        <img src="/public/img/coimbatore.jpeg" alt="Coimbatore Temple Outing">
+      </div>
+    </div>
+
+
+  <div class="love-box">
+      <div class="love-text">
+        <h1>Movie Time Together 🎬❤️</h1><br>
+        <h2>Our Cute Little Date</h2>
+
+        <p>
+          That movie time was not just watching a film...
+          <br>
+          it was one of the sweetest memories with you 💕
+        </p>
+
+        <p class="moment">Cute Moment 💞</p>
+      </div>
+
+      <div class="love-image">
+        <img src="/public/img/movie time.jpeg" alt="Movie Time Photo">
+      </div>
+    </div>
+
+    <!-- AADI 18 -->
+    <div class="love-box">
+      <div class="love-text">
+        <h1>One of the Special Day With You❤️</h1><br>
+
+        <p>
+        <b>  Aadi 18 Perukku</b> was a beautiful blessing in my life 🌸✨
+          <br>
+          Being with you that day made everything feel complete 💕
+          <br>
+          This memory will stay in my heart forever 🥹❤️
+        </p>
+
+        <p class="moment">Special Moment 💞</p>
+      </div>
+
+      <div class="love-image">
+        <img src="/public/img/Tirchy.jpeg" alt="Aadi 18 Perukku">
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <!-- LAST SECTION HAND PHOTO -->
+    <div class="hand-section">
+
+      <h1>Forever Hand in Hand 🤝❤️</h1>
+      <div class="glow-line"></div>
+
+      <p>
+        This is not just a photo...
+        <br>
+        it is our promise written without words 💞
+      </p>
+
+      <p>
+        Your hand holds my heart tighter than anything,
+        <br>
+        and I never want to let go 🥹✨
+      </p>
+
+      <p>
+        In every lifetime,
+        <br>
+        I will choose your hand again and again ❤️🔐
+      </p>
+
+      <p class="moment">
+        "If love has a shape,
+        <br>
+        it looks exactly like our hands together..."
+      </p>
+
+      <img src="/public/img/hand.jpeg" alt="Our Hand Photo">
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  let heartInterval;
+
+  // SHOW LOVE BUTTON
+  function showLove() {
+    document.getElementById("loveBox").style.display = "flex";
+
+    clearInterval(heartInterval);
+
+    heartInterval = setInterval(() => {
+      createHeartClick();
+    }, 150);
+  }
+
+  // CLICK HEARTS
+  function createHeartClick() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.top = "100vh";
+    heart.style.fontSize = (Math.random() * 25 + 15) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 4000);
+  }
+
+  // BACKGROUND FLOATING HEARTS (ALWAYS)
+  setInterval(() => {
+    const bgHeart = document.createElement("div");
+    bgHeart.classList.add("bg-heart");
+    bgHeart.innerHTML = "💗";
+
+    bgHeart.style.left = Math.random() * 100 + "vw";
+    bgHeart.style.fontSize = (Math.random() * 25 + 15) + "px";
+
+    document.body.appendChild(bgHeart);
+
+    setTimeout(() => {
+      bgHeart.remove();
+    }, 8000);
+  }, 300);
+
+  // STAR CURSOR EFFECT
+  document.addEventListener("mousemove", (e) => {
+    const star = document.createElement("div");
+    star.classList.add("star");
+    star.innerHTML = "✨";
+
+    star.style.left = e.clientX + "px";
+    star.style.top = e.clientY + "px";
+
+    document.body.appendChild(star);
+
+    setTimeout(() => {
+      star.remove();
+    }, 1000);
+  });
+</script>
+
+</body>
+</html>

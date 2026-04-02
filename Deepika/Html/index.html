@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love Theme</title>
+
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      background: linear-gradient(to bottom right, #ffffff, #ffe6f0);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+      position: relative;
+      padding: 20px;
+    }
+
+    .main{
+      width: 90%;
+      max-width: 1000px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .love-btn{
+      background: #ff4d88;
+      color: white;
+      border: none;
+      padding: 12px 35px;
+      font-size: 18px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .love-btn:hover{
+      background: #ff1a66;
+      transform: scale(1.05);
+    }
+
+    .love-container{
+      margin-top: 30px;
+      display: none;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .love-box{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+      background: rgba(255,255,255,0.9);
+      padding: 30px;
+      border-radius: 20px;
+      border: 2px solid #ffb6c1;
+      box-shadow: 0px 8px 25px rgba(255, 105, 180, 0.2);
+    }
+
+    .love-text{
+      width: 50%;
+      text-align: left;
+    }
+
+    .love-text h1{
+      color: #ff4d88;
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    .love-text h2{
+      color: #333;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .love-text p{
+      font-size: 17px;
+      color: #444;
+      margin-bottom: 10px;
+      line-height: 25px;
+    }
+
+    .moment{
+      font-weight: bold;
+      color: #ff1a66;
+      margin-top: 15px;
+    }
+
+    .love-image{
+      width: 50%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .love-image img{
+      width: 100%;
+      max-width: 300px;
+      border-radius: 20px;
+      border: 3px solid #ff4d88;
+      box-shadow: 0px 6px 20px rgba(0,0,0,0.2);
+    }
+
+    /* HEART ANIMATION */
+    .heart{
+      position: absolute;
+      animation: floatUp 4s linear forwards;
+    }
+
+    @keyframes floatUp{
+      0%{
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100%{
+        transform: translateY(-600px);
+        opacity: 0;
+      }
+    }
+
+    /* Responsive */
+    @media(max-width: 768px){
+      .love-box{
+        flex-direction: column;
+      }
+
+      .love-text, .love-image{
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="main">
+
+  <button class="love-btn" onclick="showLove()">Send Love 💌</button>
+
+  <div class="love-container" id="loveBox">
+
+    <!-- FIRST BOX (SWAPPED) -->
+<div class="love-box">
+
+  <!-- Left Side Image -->
+  <div class="love-image">
+    <img src="/public/img/first image.jpeg" alt="First Image">
+  </div>
+
+  <!-- Right Side Text -->
+  <div class="love-text">
+    <h1>Beautiful day of my life || 1st April 💙</h1>
+    <h2>AMMU PAPA</h2>
+
+    <p>Unexpected Gift of my life - PAPA 🦋❤️</p>
+    <p>My Life Line - @jeeva_selvam</p>
+    <p>Unexpected gift of my life ❤️</p>
+
+    <p class="moment">Beautiful Moment 💞</p>
+  </div>
+
+</div>
+
+
+<!-- OUR FIRST MEETING WITH HER FAMILY -->
+<div class="love-box">
+
+  <!-- Left Side Text -->
+  <div class="love-text">
+    <h1>Our First Meeting With Her Family ❤️</h1>
+    <h2>A Day I Can Never Forget ✨</h2>
+
+    <p>
+      That day was not just a normal meeting...
+      <br>
+      it was the most special moment of my life 💕
+    </p>
+
+    <p>
+      Meeting your family members and standing beside you,
+      <br>
+      made me feel like I truly belonged there 🥹❤️
+    </p>
+
+    <p>
+      And attending your temple function with you,
+      <br>
+      felt like God was blessing our love journey 🙏✨
+    </p>
+
+    <p>
+      The smiles, the blessings, and the peaceful vibes,
+      <br>
+      are memories I will carry forever in my heart 💖
+    </p>
+
+    <p class="moment">Unforgettable Moment 💞</p>
+  </div>
+
+  <!-- Right Side Image -->
+  <div class="love-image">
+    <img src="/public/img/family meet.jpeg" alt="Family Meeting Photo">
+  </div>
+
+</div>
+
+
+
+    <!-- SECOND BOX -->
+    <div class="love-box">
+      <div class="love-image">
+        <img src="/public/img/Birthday.jpeg">
+      </div>
+      <div class="love-text">
+       <h1>Special Day of My Life 🎂</h1><br><br>
+
+          <p>
+            <b>10.9.2023</b> was a painful memory because I couldn’t be with you 💔
+           
+            But <b>10.9.2024</b> became my beautiful moment because I celebrated your special day with love ❤️💞
+          </p>
+
+          <!-- <p class="moment">Beautiful Moment 💗</p> -->
+        <p></p>
+      </div>
+    </div>
+
+    <!-- THIRD BOX -->
+    <div class="love-box">
+      <div class="love-text">
+        <h1>Thanjavur Meeting 🏯❤️</h1>
+         <h2>Our First Magical Meet</h2>
+  <!-- <p>That day was the beginning of forever ❤️</p> -->
+          <p>
+            That day in Thanjavur was not just a meeting...
+            <br>
+            it was the beginning of my forever love 💕
+          </p>
+
+          <p>
+            When I saw you, my heart whispered softly,
+            <br>
+            "This is the person I prayed for" 🦋✨
+          </p>
+      </div>
+      <div class="love-image">
+        <img src="/public/img/thanjavur.jpeg">
+      </div>
+    </div>
+
+    <!-- FOURTH BOX (TIRCHY FIRST OUTING) -->
+<div class="love-box">
+
+  <!-- Left Side Image -->
+  <div class="love-image">
+    <img src="/public/img/changed.jpeg" alt="Tirchy First Outing">
+  </div>
+
+  <!-- Right Side Text -->
+  <div class="love-text">
+    <h1>Tirchy First Outing ✨❤️</h1>
+    <h2>Our Beautiful Travel Day</h2>
+
+    <p>
+      Our first outing in Tirchy was not just a trip...
+      <br>
+      it was the beginning of our sweetest memories 💕
+    </p>
+
+    <p>
+      Walking beside you, holding your hand,
+      <br>
+      felt like my heart found its happiest place 🥰✨
+    </p>
+
+    <p>
+      Every smile, every moment, every second with you
+      <br>
+      became a forever memory in my heart ❤️
+    </p>
+
+    <p class="moment">Happy Moment ❤️</p>
+  </div>
+
+</div>
+
+  
+<!-- MOVIE TIME SECTION -->
+<div class="love-box">
+
+  <!-- Left Side Text -->
+  <div class="love-text">
+    <h1>Movie Time Together 🎬❤️</h1>
+    <h2>Our Cute Little Date</h2>
+
+    <p>
+      That movie time was not just watching a film...
+      <br>
+      it was a beautiful moment where my heart felt complete 💕
+    </p>
+
+    <p>
+      Sitting beside you, sharing smiles and happiness,
+      <br>
+      made that day more special than the movie itself 🥰✨
+    </p>
+
+    <p>
+      Every scene reminded me one thing...
+      <br>
+      the best part of my life is being with you ❤️
+    </p>
+
+    <p>
+      I will never forget that movie time,
+      <br>
+      because it became one of our sweetest memories 💖
+    </p>
+
+    <p class="moment">Cute Moment 💞</p>
+  </div>
+
+  <!-- Right Side Image -->
+  <div class="love-image">
+    <img src="/public/img/movie time.jpeg" alt="Movie Time Photo">
+  </div>
+
+</div>
+ 
+<!-- AADI 18 PERUKKU SPECIAL DAY -->
+<div class="love-box">
+
+  <!-- Left Side Image -->
+  <div class="love-image">
+    <img src="/public/img/Tirchy.jpeg" alt="Aadi 18 Perukku">
+  </div>
+
+  <!-- Right Side Text -->
+  <div class="love-text">
+    <h1>One of the Special  Day With You ❤️</h1><br><br>
+
+    <p>
+      Aadi 18 Perukku was a beautiful blessing in my life 🌸✨
+      <br>
+      Being with you that day made everything feel complete 💕
+      <br>
+      This memory will stay in my heart forever 🥹❤️
+    </p>
+
+    <p class="moment">Special Moment 💞</p>
+  </div>
+
+</div>
+
+
+  <!-- Right Side Text -->
+ <!-- FOURTH BOX (OUR FIRST FIGHT) -->
+<!-- OUR FIRST FIGHT BOX -->
+<div class="love-box">
+
+  <!-- Left Side Text -->
+  <div class="love-text">
+    <h1>Our First Fight 💔</h1>
+    <h2>The Pain That Changed Us...</h2>
+
+    <p>
+      Our first fight was not truly ours...
+      <br>
+      it was created by a third person 🥀
+    </p>
+
+    <p>
+      That misunderstanding built a distance between us,
+      <br>
+      a silence that hurt more than words 💭
+    </p>
+
+    <p>
+      For a moment, it felt like we lost everything...
+      <br>
+      like our love was slipping away 💔
+    </p>
+
+    <p>
+      But by God’s grace, we found our way back to each other 🙏❤️
+      <br>
+      we understood, we healed, and now we are stronger than ever 💕
+    </p>
+
+    <p class="moment">
+      "Some fights are not meant to break us,
+      <br>
+      they are meant to make us understand how deeply we love each other..."
+    </p>
+  </div>
+
+  <!-- Right Side Image -->
+  <div class="love-image">
+    <img src="/public/img/fight.jpeg" alt="Our First Fight">
+  </div>
+
+</div>
+
+<!-- COIMBATORE TEMPLE OUTING (SWAPPED) -->
+<div class="love-box">
+
+  <!-- Left Side Image -->
+  <div class="love-image">
+    <img src="/public/img/coimbatore.jpeg" alt="Coimbatore Temple Outing">
+  </div>
+
+  <!-- Right Side Text -->
+  <div class="love-text">
+    <h1>Our First Day Coimbatore Outing 🛕❤️</h1>
+    <h2>Vinayagar Temple Moment ✨</h2>
+
+    <p>
+      Our first day in Coimbatore was not just an outing...
+      <br>
+      it was a beautiful blessing for our love journey 💕
+    </p>
+
+    <p>
+      Standing with you inside Vinayagar temple,
+      <br>
+      I felt peace, happiness, and love all together 🙏💖
+    </p>
+
+    <p>
+      Your smile in that holy place made my heart melt,
+      <br>
+      and that moment became one of my favorite memories 🥹✨
+    </p>
+
+    <p>
+      I will never forget that day,
+      <br>
+      because it felt like God accepted our love ❤️🙏
+    </p>
+
+    <p class="moment">Blessed Moment 💞</p>
+  </div>
+
+</div>
+
+
+  </div>
+</div>
+<script>
+  let heartInterval;
+
+  function showLove() {
+    document.getElementById("loveBox").style.display = "flex";
+
+    clearInterval(heartInterval);
+
+    heartInterval = setInterval(() => {
+      createHeart();
+    }, 200);
+  }
+
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.top = "100vh";
+    heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 4000);
+  }
+</script>
+
+</body>
+</html>
